@@ -1,14 +1,41 @@
+[![Flattr Button](http://api.flattr.com/button/button-static-50x60.png "Flattr This!")](https://flattr.com/thing/1577449 "tpacpi-bat")
+
 tpacpi-bat - ThinkPad ACPI Battery Util
+=======================================
 
 Exposes ACPI interface for battery controls.
--force discharge
--inhibit charge
--start charge threshold
--stop charge threshold
+- force discharge
+- inhibit charge
+- start charge threshold
+- stop charge threshold
 
 This project is licensed under the GPLv3. See COPYING for details.
-Copyright 2011,2013 Elliot Wolk
 
+Copyright 2011-2016 Elliot Wolk
+
+Installation
+------------
+
+- `install.pl` installs `acpi_call` from git and copies `tpacpi-bat` to /usr/bin
+- `acpi_call` is required (https://github.com/teleshoes/acpi_call.git)
+- `tpacpi-bat` has no other requirements besides perl; put it where you like
+
+Startup systemd service
+-----------------------
+
+- Edit desired thresholds in `examples/tpacpi.conf.d`
+- Copy `examples/tpacpi.service` to systemd unit dir (`/usr/lib/systemd/system`)
+- Copy `tpacpi.conf.d` to `/etc/conf.d/tpacpi`
+
+Supported Hardware
+------------------
+There is an unofficial, community-maintained list of supported ThinkPads here:
+[Supported Hardware](../../wiki/Supported-Hardware)
+
+Usage
+-----
+
+```
 Usage:
   Show this message:
     tpacpi-bat [-h|--help]
@@ -45,3 +72,4 @@ Usage:
     <discharge>  1 for force discharge, 0 for stop forcing discharge
     <acbreak>    1 for stop forcing when AC is detached, 0 for do not
     [] means optional: sets value to 0
+```
